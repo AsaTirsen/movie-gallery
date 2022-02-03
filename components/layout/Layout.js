@@ -1,5 +1,5 @@
 import MainNavigation from './MainNavigation';
-import Movies from '../movies/Movies';
+import Movies from '../movies/MovieList';
 import classes from './Layout.module.css';
 
 function Layout(props) {
