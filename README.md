@@ -23,6 +23,8 @@ Use genre_ids to get genres
 
 Move response handling to index and create object to avoid logic in component
 
+Pagination
+
 Build filter function
 
 Style according to Figma spec
