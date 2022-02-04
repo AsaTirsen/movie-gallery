@@ -1,16 +1,17 @@
+import classes from "./MovieList.module.css";
+
 const baseUrl = 'https://image.tmdb.org/t/p/original/'
 
 function MovieList(props) {
   return (
-    <ul>
+    <div className={classes.listcontainer}>
       {props.movies.map((movie) => (
-        <div>
-          {console.log('https://image.tmdb.org/t/p/original'+ movie.poster_path)}
-          <img src={`${baseUrl}${movie.poster_path}`}/>
-          
+        <div className={classes.imagecontainer}>
+          {console.log('https://image.tmdb.org/t/p/w500'+ movie.poster_path)}
+          <img className={`${classes.imagestyle}`}src={`${baseUrl}${movie.poster_path}`}/>    
         </div>
       ))}
-    </ul>
+    </div>
   );
 }
 

@@ -1,0 +1,25 @@
+.listcontainer {
+  max-width: 70%;
+  overflow-x: hidden;
+  display: grid;
+  justify-content: space-evenly;
+  grid-template-columns: repeat(5, 153px);
+  /* grid-template-rows: 50px; */
+  row-gap: 120px;
+  column-gap: 40px;
+}
+
+.imagecontainer {
+  width: 153px;
+  height: 200px;
+  overflow: hidden;
+}
+
+.imagestyle {
+  width: 153px;
+  height: 200px;
+  border-radius: 4px;
+  left: 50%;
+  position: relative;
+  transform: translateX(-50%);
+}

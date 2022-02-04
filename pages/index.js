@@ -19,21 +19,20 @@ export default function Home() {
     }).then(data => {
       // transform in an array  
       const movies = []
-      data.results.forEach(result => console.log(result.original_title));
+      data.results.forEach(result => console.log(result));
       data.results.forEach(function(result){
         let movie = {
+        key: result.id,
         id:result.id,
         poster_path: result.poster_path,
         title: result.original_title,
         }
-        console.log(movie)
         movies.push(movie)
       });
   
 
       setIsLoading(false)
       setloadedMovies(movies)
-      console.log({ movies })
     })
   }, [])
 
