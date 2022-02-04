@@ -1,7 +1,8 @@
-import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import MovieList from "../components/movies/MovieList";
 import { useState, useEffect } from 'react'
+import Search from "../components/movies/Search";
+
 
 
 export default function Home() {
@@ -23,7 +24,7 @@ export default function Home() {
       data.results.forEach(function(result){
         let movie = {
         key: result.id,
-        id:result.id,
+        id: result.id,
         poster_path: result.poster_path,
         title: result.original_title,
         }
@@ -46,7 +47,7 @@ export default function Home() {
   
 
   return <main className={styles.main}>
-  <h1 className={styles.title}> Gallery </h1>
+    <Search/>
     <MovieList movies={loadedMovies} />
 </main>
 }
