@@ -8,19 +8,21 @@ export default function Home() {
   const [loadedMovies, setloadedMovies] = useState([]);
   const [query, setQuery] = useState("");
 
+  // Default on loading, displays latest movies
   function fetchLatest() {
     fetch(
       "https://api.themoviedb.org/3/trending/all/week?api_key=27cfec6c9eb8080cb7d8025ba420e2d7&language=en-US"
     )
-    .then((response) => {
-      return response.json();
-    })
-    .then((data) => {
-      setIsLoading(false);
-      setloadedMovies(data.results);
-    });
-}
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        setIsLoading(false);
+        setloadedMovies(data.results.slice(0, 10));
+      });
+  }
 
+  // On entering search term, displays best matches
   function search(query) {
     fetch(
       `https://api.themoviedb.org/3/search/movie?api_key=27cfec6c9eb8080cb7d8025ba420e2d7&language=en-US&query=${query}`
@@ -29,22 +31,23 @@ export default function Home() {
         return response.json();
       })
       .then((data) => {
-        setloadedMovies(data.results);
+        setloadedMovies(data.results.slice(0, 10));
       });
   }
 
+  // Sets state for when no active search is being done
   useEffect(() => {
     setIsLoading(true);
     fetchLatest();
   }, []);
 
+  // Sets state when search is entered
   useEffect(() => {
     if (query === "") {
       fetchLatest();
     } else {
       search(query);
     }
-   
   }, [query]);
 
   if (isLoading) {
@@ -57,8 +60,10 @@ export default function Home() {
 
   return (
     <main className={styles.main}>
-      <Search passQuery={setQuery}/>
-      <MovieList movies={loadedMovies} />
+      <div className={styles.page}>
+        <Search passQuery={setQuery} />
+        <MovieList movies={loadedMovies} />
+      </div>
     </main>
   );
 }

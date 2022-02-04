@@ -7,22 +7,22 @@ function MainNavigation() {
     <header className={classes.header}>
       <h2 className={classes.title}>The Movie Finder</h2>
       <nav>
-      <ul>
-        <li>
-          <Link href='/'>Movies</Link>
-        </li>
-        <li>
-          <Link href='/tv-shows'>TV shows</Link>
-        </li>
-        <li>
-          <Link href='/actors'>Actors</Link>
-        </li>
-        <li>
-          <Link href='/sign-in'>Sign in</Link>
-        </li>
-      </ul>
-    </nav>
-        </header>
+        <ul>
+          <li>
+            <Link href="/">Movies</Link>
+          </li>
+          <li>
+            <Link href="/tv-shows">TV shows</Link>
+          </li>
+          <li>
+            <Link href="/actors">Actors</Link>
+          </li>
+          <li>
+            <Link href="/sign-in">Sign in</Link>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
 }
 
