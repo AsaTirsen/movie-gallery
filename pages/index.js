@@ -7,11 +7,12 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [loadedMovies, setloadedMovies] = useState([]);
   const [query, setQuery] = useState("");
+  const apikey = "27cfec6c9eb8080cb7d8025ba420e2d7";
 
   // Default on loading, displays latest movies
   function fetchLatest() {
     fetch(
-      "https://api.themoviedb.org/3/trending/all/week?api_key=27cfec6c9eb8080cb7d8025ba420e2d7&language=en-US"
+      `https://api.themoviedb.org/3/trending/all/week?api_key=${apikey}&language=en-US`
     )
       .then((response) => {
         return response.json();
@@ -25,7 +26,7 @@ export default function Home() {
   // On entering search term, displays best matches
   function search(query) {
     fetch(
-      `https://api.themoviedb.org/3/search/movie?api_key=27cfec6c9eb8080cb7d8025ba420e2d7&language=en-US&query=${query}`
+      `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&language=en-US&query=${query}`
     )
       .then((response) => {
         return response.json();

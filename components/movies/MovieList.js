@@ -3,6 +3,7 @@ import classes from "./MovieList.module.css";
 const baseUrl = "https://image.tmdb.org/t/p/original/";
 
 function MovieList(props) {
+  console.log(props.movies);
   return (
     <div className={classes.listcontainer}>
       {props.movies.map((movie) => (
@@ -11,7 +12,8 @@ function MovieList(props) {
             className={`${classes.imagestyle}`}
             src={`${baseUrl}${movie.poster_path}`}
           />
-          <figcaption>{movie.title}</figcaption>
+          <figcaption>{`${movie.release_date || ""} ${movie.title || movie.name
+          }`}</figcaption>
         </figure>
       ))}
     </div>

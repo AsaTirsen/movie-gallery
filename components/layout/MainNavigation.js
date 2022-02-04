@@ -12,13 +12,13 @@ function MainNavigation() {
             <Link href="/">Movies</Link>
           </li>
           <li>
-            <Link href="/tv-shows">TV shows</Link>
+            <Link href="/">TV shows</Link>
           </li>
           <li>
-            <Link href="/actors">Actors</Link>
+            <Link href="/">Actors</Link>
           </li>
           <li>
-            <Link href="/sign-in">Sign in</Link>
+            <Link href="/">Sign in</Link>
           </li>
         </ul>
       </nav>
