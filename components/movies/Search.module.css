@@ -1,10 +1,26 @@
+
+@media only screen and (min-width: 768px) {
+    .search {
+        width: 678px;
+        height: 45px;
+        margin: 70px 0px 40px 70px;
+        border: 1px solid #666;
+        box-sizing: border-box;
+        border-radius: 4px;
+        font-size: 18px;
+        padding: 18px;
+      } 
+}
+
+@media only screen and (max-width: 768px) {
 .search {
-  width: 678px;
+  width: calc(100% - 10px);
   height: 45px;
-  margin: 70px 0px 40px 70px;
+  margin: 5px;
   border: 1px solid #666;
   box-sizing: border-box;
   border-radius: 4px;
   font-size: 18px;
   padding: 18px;
+}
 }
