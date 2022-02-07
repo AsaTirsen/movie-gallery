@@ -1,5 +1,5 @@
-## This is a project build with Next.js and React
-This webapp calls the Movie database API. The default shows the latest releases, but you can search for movies in the search bar.
+## Movie Gallery
+This is a project built with Next.js and React, that calls the Movie database API. The default shows the latest releases, but you can search for movies in the search bar.
 
 ## To run the app
 
