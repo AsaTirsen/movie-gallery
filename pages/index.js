@@ -2,6 +2,9 @@ import styles from "../styles/Home.module.css";
 import MovieList from "../components/movies/MovieList";
 import { useState, useEffect } from "react";
 import Search from "../components/movies/Search";
+import { push as Menu } from 'react-burger-menu'
+import React from "react";
+
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);

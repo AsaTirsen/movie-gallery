@@ -2,10 +2,9 @@
   min-height: calc(100vh - 130px);
   width: 100%;
   overflow: hidden;
-  margin: 0 auto -60px;
 }
 
 .page {
   max-width: 900px;
-  margin: auto;
+  margin: auto auto 4em auto;
 }
