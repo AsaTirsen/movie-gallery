@@ -1,10 +1,8 @@
-import { useCallback, useRef, useState } from "react";
-import Link from "next/link";
+import { useCallback, useRef } from "react";
 import classes from "./Search.module.css";
 
 export default function Search(props) {
   const searchRef = useRef(null);
-  const [results, setResults] = useState([]);
 
   const onChange = useCallback((event) => {
     const query = event.target.value;

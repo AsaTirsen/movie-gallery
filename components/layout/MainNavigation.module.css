@@ -1,11 +1,19 @@
+
+.title {
+  font-size: 1rem;
+  color: #333;
+  text-align: left;
+}
+
+
 @media only screen and (max-width: 768px) {
   .navBarLarge {
     display: none;
   }
 
-  .header {
+  .navigation {
     width: 100%;
-    height: 4rem;
+    height: 76px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -20,7 +28,7 @@
     margin-top: 3px;
   }
 
-  .navBar .button {
+  .button {
     position: absolute;
     right: 0;
     top: 0;
@@ -28,6 +36,7 @@
     cursor: pointer;
     background: transparent;
     border: none;
+    margin-top: 27px;
   }
 
   .menuNav {
@@ -74,21 +83,11 @@
   }
 }
 
-
-
-.title {
-  font-size: 1rem;
-  color: #333;
-  text-align: left;
-}
-
-
-
 @media only screen and (min-width: 768px) {
   .navBarSmall {
     display: none;
   }
-  .header {
+  .navigation {
     width: 100%;
     height: 4rem;
     display: flex;
@@ -98,7 +97,7 @@
     padding: 0 10%;
   }
 
-  .header ul {
+  .navigation ul {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -106,19 +105,19 @@
     flex-direction: row;
   }
 
-  .header li {
+  .navigation li {
     margin-left: 3rem;
   }
   
-  .header a {
+  .navigation a {
     text-decoration: none;
     font-size: 1rem;
     color: #333;
   }
   
-  .header a:hover,
-  .header a:active,
-  .header a.active {
+  .navigation a:hover,
+  .navigation a:active,
+  .navigation a.active {
     color: grey;
   }
 }

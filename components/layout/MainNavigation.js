@@ -1,9 +1,8 @@
-import { useContext } from "react";
 import Link from "next/link";
 import classes from "./MainNavigation.module.css";
 import React, { useState } from "react";
 import { MdClose } from "react-icons/md";
-import { FiMenu } from "react-icons/fi";
+import { IoIosMenu } from "react-icons/io";
 
 function MainNavigation() {
   const [navbarOpen, setNavbarOpen] = useState(false);
@@ -14,7 +13,7 @@ function MainNavigation() {
     setNavbarOpen(false);
   };
   return (
-    <header className={classes.header}>
+    <header className={classes.navigation}>
       <h2 className={classes.title}>The Movie Finder</h2>
       <nav className={classes.navBarLarge}>
         <ul>
@@ -35,44 +34,29 @@ function MainNavigation() {
       <nav className={classes.navBarSmall}>
         <button className={classes.button} onClick={handleToggle}>
           {navbarOpen ? (
-            <MdClose style={{ color: "#fff", width: "40px", height: "40px" }} />
+            <MdClose style={{ color: "#fff", width: "37px", height: "32px" }} />
           ) : (
-            <FiMenu
-              style={{ color: "#7b7b7b", width: "40px", height: "40px" }}
+            <IoIosMenu
+              style={{ color: "#7b7b7b", width: "37px", height: "32px" }}
             />
           )}
         </button>
         <ul
           className={`${classes.menuNav} ${navbarOpen ? classes.showMenu : ""}`}
         >
-          <li className={classes.listitem}>
-            <Link
-              href="/"
-              activeClassName="active-link"
-              onClick={() => closeMenu()}
-              exact
-            >
-              Movies
-            </Link>
-          </li>
-          <li className={classes.listitem}>
-            <Link
-              href="/"
-              activeClassName="active-link"
-              onClick={() => closeMenu()}
-              exact
-            >
-              TV-series
-            </Link>
-          </li>
           <li>
-            <Link
-              href="/"
-              activeClassName="active-link"
-              onClick={() => closeMenu()}
-              exact
-            >
-              Actors
+            <Link href="/">
+              <a onClick={(e) => closeMenu(e)}>Movies</a>
+            </Link>
+          </li>
+          <li className={classes.listitem}>
+            <Link href="/">
+              <a onClick={(e) => closeMenu(e)}>TV-shows</a>
+            </Link>
+          </li>
+          <li className={classes.listitem}>
+            <Link href="/">
+              <a onClick={(e) => closeMenu(e)}>Actors</a>
             </Link>
           </li>
         </ul>

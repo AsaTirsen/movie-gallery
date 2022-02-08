@@ -1,5 +1,4 @@
 import MainNavigation from "./MainNavigation";
-import Menu from "./BurgerMenu";
 import classes from "./Layout.module.css";
 import Footer from "./Footer";
 
