@@ -9,22 +9,20 @@ export default function Index() {
   const [loadedMovies, setloadedMovies] = useState([]);
   const [loadedGenres, setloadedGenres] = useState([]);
   const [query, setQuery] = useState("");
-  let apikey = "27cfec6c9eb8080cb7d8025ba420e2d7";
+  const apikey = "27cfec6c9eb8080cb7d8025ba420e2d7";
 
   function createObject(data) {
-    const movies = [];
-    data.results.map(function (result) {
+    return data.results.map(function (result) {
       // Loops through the ids array to find the matching genre name
       const genres = [];
-      result.genre_ids.map(function (genre_id) {
-        loadedGenres.map(function (genre) {
+      result.genre_ids.forEach(function (genre_id) {
+        loadedGenres.forEach(function (genre) {
           if (genre_id === genre.id) {
             genres.push(genre.name);
           }
-          return genres;
         });
       });
-      let movie = {
+      return {
         key: result.id,
         id: result.id,
         poster_path: result.poster_path,
@@ -33,9 +31,7 @@ export default function Index() {
         year: result.release_date,
         genres: genres.toString(),
       };
-      movies.push(movie);
     });
-    return movies;
   }
 
   // Default on loading, displays latest movies
@@ -74,36 +70,28 @@ export default function Index() {
         return response.json();
       })
       .then((data) => {
-        const genres = [];
-        data.genres.map(function (genreItem) {
-          let genre = {
-            key: genreItem.id,
-            id: genreItem.id,
-            name: genreItem.name,
-          };
-          genres.push(genre);
-          setIsLoading(false);
-          setloadedGenres(genres);
-        });
+        setloadedGenres(data.genres);
       });
   }
 
   // Sets state for when no active search is being done
   useEffect(() => {
     setIsLoading(true);
-    fetchLatest();
     fetchGenres();
   }, []);
 
   // Sets state when search is entered
   useEffect(() => {
-    fetchGenres();
+    if (loadedGenres.length == 0) {
+      // genres not loaded yet, we can't search
+      return;
+    }
     if (query === "") {
       fetchLatest();
     } else {
       search(query);
     }
-  }, [query]);
+  }, [query, loadedGenres]);
 
   if (isLoading) {
     return (
