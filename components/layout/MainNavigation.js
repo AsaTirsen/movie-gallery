@@ -37,7 +37,7 @@ function MainNavigation() {
             <MdClose style={{ color: "#fff", width: "37px", height: "32px" }} />
           ) : (
             <IoIosMenu
-              style={{ color: "#7b7b7b", width: "37px", height: "32px" }}
+              style={{ color: "#333", width: "37px", height: "32px" }}
             />
           )}
         </button>

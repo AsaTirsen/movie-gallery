@@ -39,3 +39,7 @@
 .imagecontainer figcaption {
   margin: 5px 10px;
 }
+
+.title { 
+  font-weight: bold;
+}

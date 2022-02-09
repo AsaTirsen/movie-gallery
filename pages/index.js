@@ -17,6 +17,7 @@ export default function Index() {
       const genres = [];
       result.genre_ids.forEach(function (genre_id) {
         loadedGenres.forEach(function (genre) {
+          console.log(result.title +  result.name +  genre_id)
           if (genre_id === genre.id) {
             genres.push(genre.name);
           }
@@ -28,8 +29,8 @@ export default function Index() {
         poster_path: result.poster_path,
         title: result.title,
         name: result.name,
-        year: result.release_date,
-        genres: genres.toString(),
+        year: result.release_date ? result.release_date.slice(0, 4): result.first_air_date.slice(0, 4),
+        genres: genres.join(", "),
       };
     });
   }
@@ -71,6 +72,7 @@ export default function Index() {
       })
       .then((data) => {
         setloadedGenres(data.genres);
+        console.log(loadedGenres)
       });
   }
 
