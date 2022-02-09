@@ -11,41 +11,36 @@ export default function Index() {
   const [query, setQuery] = useState("");
   const apikey = "27cfec6c9eb8080cb7d8025ba420e2d7";
 
-  function createObject(data) {
-    return data.results.map(function (result) {
-      // Loops through the ids array to find the matching genre name
-      const genres = [];
-      result.genre_ids.forEach(function (genre_id) {
-        loadedGenres.forEach(function (genre) {
-          console.log(result.title +  result.name +  genre_id)
-          if (genre_id === genre.id) {
-            genres.push(genre.name);
-          }
-        });
-      });
-      return {
-        key: result.id,
-        id: result.id,
-        poster_path: result.poster_path,
-        title: result.title,
-        name: result.name,
-        year: result.release_date ? result.release_date.slice(0, 4): result.first_air_date.slice(0, 4),
-        genres: genres.join(", "),
-      };
-    });
+  // Converts response to list of movies
+  function responseToMovieList(response) {
+    return response.results.map((result) => ({
+      key: result.id,
+      id: result.id,
+      poster_path: result.poster_path,
+      title: result.title,
+      name: result.name,
+      year: result.release_date
+        ? result.release_date.slice(0, 4)
+        : result.first_air_date.slice(0, 4),
+      genres: result.genre_ids
+        .map(
+          (genre_id) => loadedGenres.find((genre) => genre.id === genre_id).name
+        )
+        .join(", "),
+    }));
   }
 
   // Default on loading, displays latest movies
   function fetchLatest() {
     fetch(
-      `https://api.themoviedb.org/3/trending/all/week?api_key=${apikey}&language=en-US`
+      `https://api.themoviedb.org/3/movie/now_playing?api_key=${apikey}&language=en-US`
     )
       .then((response) => {
         return response.json();
       })
       .then((data) => {
         setIsLoading(false);
-        setloadedMovies(createObject(data).slice(0, 10));
+        setloadedMovies(responseToMovieList(data).slice(0, 10));
       });
   }
 
@@ -59,7 +54,7 @@ export default function Index() {
       })
       .then((data) => {
         setIsLoading(false);
-        setloadedMovies(createObject(data).slice(0, 10));
+        setloadedMovies(responseToMovieList(data).slice(0, 10));
       });
   }
 
@@ -72,7 +67,6 @@ export default function Index() {
       })
       .then((data) => {
         setloadedGenres(data.genres);
-        console.log(loadedGenres)
       });
   }
 
