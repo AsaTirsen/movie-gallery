@@ -1,10 +1,10 @@
-import Link from "next/link";
-import classes from "./BurgerMenu.module.css";
 import React, { useState } from "react";
+import classes from "./BurgerMenu.module.css";
+import NavigationLinks from "./NavigationLinks";
 import { MdClose } from "react-icons/md";
 import { IoIosMenu } from "react-icons/io";
 
-function BurgerMenu() {
+function BurgerMenu(props) {
   const [navbarOpen, setNavbarOpen] = useState(false);
   const handleToggle = () => {
     setNavbarOpen((prev) => !prev);
@@ -21,25 +21,10 @@ function BurgerMenu() {
           <IoIosMenu className={classes.icon} />
         )}
       </button>
-      <ul
+      <NavigationLinks
         className={`${classes.menuNav} ${navbarOpen ? classes.showMenu : ""}`}
-      >
-        <li>
-          <Link href="/">
-            <a onClick={(e) => closeMenu(e)}>Movies</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/">
-            <a onClick={(e) => closeMenu(e)}>TV-shows</a>
-          </Link>
-        </li>
-        <li>
-          <Link href="/">
-            <a onClick={(e) => closeMenu(e)}>Actors</a>
-          </Link>
-        </li>
-      </ul>
+        onClick={(e) => closeMenu(e)}
+      />
     </nav>
   );
 }

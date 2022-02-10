@@ -1,25 +1,12 @@
 import Link from "next/link";
 import classes from "./MainNavigation.module.css";
-import React, { useState } from "react";
+import NavigationLinks from "./NavigationLinks";
 
 function MainNavigation() {
   return (
-      <nav className={classes.navBarLarge}>
-        <ul>
-          <li>
-            <Link href="/">Movies</Link>
-          </li>
-          <li>
-            <Link href="/">TV shows</Link>
-          </li>
-          <li>
-            <Link href="/">Actors</Link>
-          </li>
-          <li>
-            <Link href="/">Sign in</Link>
-          </li>
-        </ul>
-      </nav>
+    <nav className={classes.navBarLarge}>
+      <NavigationLinks className={null} onCLick={null} />
+    </nav>
   );
 }
 

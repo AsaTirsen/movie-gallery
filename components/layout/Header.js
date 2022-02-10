@@ -1,7 +1,6 @@
 import BurgerMenu from "./BurgerMenu";
-import classes from "./Header.module.css"
+import classes from "./Header.module.css";
 import MainNavigation from "./MainNavigation";
-
 
 function Header() {
   return (

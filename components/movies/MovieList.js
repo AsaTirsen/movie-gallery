@@ -10,9 +10,12 @@ function MovieList(props) {
           <img
             className={`${classes.imagestyle}`}
             src={`${baseUrl}${movie.poster_path}`}
-          /> 
-          <figcaption><div className={classes.title}>{`${
-            movie.title || movie.name}`}</div>{`${movie.year}`} &bull; {`${movie.genres}`}
+          />
+          <figcaption>
+            <div className={classes.title}>{`${
+              movie.title || movie.name
+            }`}</div>
+            {`${movie.year}`} &bull; {`${movie.genres}`}
           </figcaption>
         </figure>
       ))}
