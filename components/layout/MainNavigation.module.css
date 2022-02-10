@@ -1,123 +1,31 @@
+/* Style for navbar for larger media queries  */
 
-.title {
-  font-size: 1rem;
-  color: #333;
-  text-align: left;
+.navBarLarge ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: row;
 }
 
+.navBarLarge li {
+  margin-left: 3rem;
+}
+
+.navBarLarge a {
+  text-decoration: none;
+  font-size: 1rem;
+  color: #333;
+}
+
+.navBarLarge a:hover,
+.navBarLarge a:active,
+.navBarLarge a.active {
+  color: grey;
+}
 
 @media only screen and (max-width: 768px) {
   .navBarLarge {
     display: none;
-  }
-
-  .navigation {
-    width: 100%;
-    height: 76px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff;
-    padding: 0 10%;
-  }
-
-  .navBarSmall {
-    position: absolute;
-    right: 0;
-    top: 0;
-    margin-top: 3px;
-  }
-
-  .button {
-    position: absolute;
-    right: 0;
-    top: 0;
-    z-index: 10;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    margin-top: 27px;
-  }
-
-  .menuNav {
-    overflow-y: scroll;
-    list-style: none;
-    position: fixed;
-    top: 0;
-    background: #ffffff;
-    right: 0;
-    bottom: 0;
-    height: auto;
-    width: 0;
-    overflow: hidden;
-    max-width: 150px;
-    z-index: 9;
-    flex-direction: column;
-    padding: 0;
-  }
-
-  .menuNav.showMenu {
-    width: 100%;
-  }
-
-  .menuNav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .menuNav a {
-    display: block;
-    list-style: column;
-    padding: 10px 40px;
-    text-decoration: none;
-    color: #333;
-    text-transform: uppercase;
-    font-weight: bold;
-  }
-
-  .menuNav li:first-child {
-    margin-top: 7rem;
-  }
-}
-
-@media only screen and (min-width: 768px) {
-  .navBarSmall {
-    display: none;
-  }
-  .navigation {
-    width: 100%;
-    height: 4rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff;
-    padding: 0 10%;
-  }
-
-  .navigation ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: row;
-  }
-
-  .navigation li {
-    margin-left: 3rem;
-  }
-  
-  .navigation a {
-    text-decoration: none;
-    font-size: 1rem;
-    color: #333;
-  }
-  
-  .navigation a:hover,
-  .navigation a:active,
-  .navigation a.active {
-    color: grey;
   }
 }

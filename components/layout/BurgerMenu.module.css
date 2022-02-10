@@ -1,0 +1,74 @@
+/* Style for navbar for small screen media queries  */
+
+.navBarSmall {
+  display: unset;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin-top: 3px;
+}
+
+.button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+}
+
+.icon {
+  color: #333;
+  width: 37px;
+  height: 32px;
+}
+
+.menuNav {
+  overflow-y: scroll;
+  list-style: none;
+  position: fixed;
+  top: 0px;
+  background: #ffffff;
+  right: 0;
+  bottom: 0;
+  height: auto;
+  width: 0;
+  overflow: hidden;
+  max-width: 150px;
+  z-index: 9;
+  flex-direction: column;
+  padding: 0;
+}
+
+.menuNav.showMenu {
+  width: 100%;
+}
+
+.menuNav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuNav a {
+  display: block;
+  list-style: column;
+  padding: 10px 40px;
+  text-decoration: none;
+  color: #333;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.menuNav li:first-child {
+  margin-top: 7rem;
+}
+
+@media only screen and (min-width: 768px) {
+  .navBarSmall {
+    display: none;
+  }
+}
