@@ -15,13 +15,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 This project is a work in progress. 
 
 ### TO DO: 
-Make app responsive
-
-Build API to protect environment variables
-
-Use genre_ids to get genres
-
-Move response handling to index and create object to avoid logic in component
+Build API
 
 Pagination
 
