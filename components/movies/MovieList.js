@@ -10,12 +10,14 @@ function MovieList(props) {
           <img
             className={`${classes.imagestyle}`}
             src={`${baseUrl}${movie.poster_path}`}
+            alt={`No image found for ${movie.title}`}
           />
           <figcaption>
             <div className={classes.title}>{`${
               movie.title || movie.name
             }`}</div>
-            {`${movie.year}`} &bull; {`${movie.genres}`}
+            {`${movie.year.slice(0, 4)}`} &bull; {`${movie.genres}`}
+            {console.log(movie.year)}
           </figcaption>
         </figure>
       ))}

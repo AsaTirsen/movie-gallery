@@ -1,6 +1,6 @@
 import styles from "../styles/Index.module.css";
 import MovieList from "../components/movies/MovieList";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Search from "../components/movies/Search";
 import React from "react";
 import ErrorComponent from "../components/layout/ErrorComponent";
@@ -13,7 +13,7 @@ export default function Index() {
   const [hasError, setHasError] = useState(false);
   const [statusCode, setStatusCode] = useState();
   const apikey = "27cfec6c9eb8080cb7d8025ba420e2d7";
-  let baseUrl = "https://api.themoviedb.org/3/"
+  let baseUrl = "https://api.themoviedb.org/3/";
 
   // Converts response to list of movies
   const responseToMovieList = (response, genreIds) => {
@@ -23,9 +23,7 @@ export default function Index() {
       poster_path: result.poster_path,
       title: result.title,
       name: result.name,
-      year: result.release_date
-        ? result.release_date.slice(0, 4)
-        : result.first_air_date.slice(0, 4),
+      year: result.release_date ? result.release_date : result.first_air_date ? result.first_air_date : "YEAR",
       genres: result.genre_ids
         .map(
           (genre_id) =>
@@ -34,7 +32,7 @@ export default function Index() {
         .join(", "),
     }));
   };
-
+  
   // Sets state with req response
   useEffect(() => {
     const fetchFromMovieDb = async () => {
@@ -49,10 +47,12 @@ export default function Index() {
           fetch(urlMovie),
           fetch(urlGenres),
         ]);
+        console.log(urlMovie);
         const movies = await moviesResponse.json();
         const genreIds = await genresResponse.json();
         if (moviesResponse.ok && genresResponse.ok) {
           setloadedMovies(responseToMovieList(movies, genreIds).slice(0, 10));
+          console.log(loadedMovies);
         } else {
           throw new Error(moviesResponse.status);
         }
