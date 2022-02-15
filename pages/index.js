@@ -13,6 +13,7 @@ export default function Index() {
   const [hasError, setHasError] = useState(false);
   const [statusCode, setStatusCode] = useState();
   const apikey = "27cfec6c9eb8080cb7d8025ba420e2d7";
+  let baseUrl = "https://api.themoviedb.org/3/"
 
   // Converts response to list of movies
   const responseToMovieList = (response, genreIds) => {
@@ -37,11 +38,11 @@ export default function Index() {
   // Sets state with req response
   useEffect(() => {
     const fetchFromMovieDb = async () => {
-      const urlGenres = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apikey}&language=en-US`;
+      const urlGenres = `${baseUrl}genre/movie/list?api_key=${apikey}&language=en-US`;
       const urlMovie =
         query === ""
-          ? `https://api.themoviedb.org/3/movie/now_playing?api_key=${apikey}&language=en-US`
-          : `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&language=en-US&query=${query}`;
+          ? `${baseUrl}movie/now_playing?api_key=${apikey}&language=en-US`
+          : `${baseUrl}search/movie?api_key=${apikey}&language=en-US&query=${query}`;
 
       try {
         const [moviesResponse, genresResponse] = await Promise.all([
