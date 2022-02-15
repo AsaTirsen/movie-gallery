@@ -23,7 +23,11 @@ export default function Index() {
       poster_path: result.poster_path,
       title: result.title,
       name: result.name,
-      year: result.release_date ? result.release_date : result.first_air_date ? result.first_air_date : "YEAR",
+      year: result.release_date
+        ? result.release_date
+        : result.first_air_date
+        ? result.first_air_date
+        : "YEAR",
       genres: result.genre_ids
         .map(
           (genre_id) =>
@@ -32,7 +36,7 @@ export default function Index() {
         .join(", "),
     }));
   };
-  
+
   // Sets state with req response
   useEffect(() => {
     const fetchFromMovieDb = async () => {
@@ -52,7 +56,6 @@ export default function Index() {
         const genreIds = await genresResponse.json();
         if (moviesResponse.ok && genresResponse.ok) {
           setloadedMovies(responseToMovieList(movies, genreIds).slice(0, 10));
-          console.log(loadedMovies);
         } else {
           throw new Error(moviesResponse.status);
         }
