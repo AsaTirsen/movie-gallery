@@ -4,7 +4,7 @@
   overflow: hidden;
 }
 
-.page {
+.container {
   max-width: 900px;
   margin: auto auto 8em auto;
 }

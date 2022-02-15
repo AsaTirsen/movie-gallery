@@ -1,4 +1,6 @@
 .main {
+  min-height: calc(100vh - 130px);
   width: 100%;
+  overflow: hidden;
   background-color: #e5e5e5;
 }

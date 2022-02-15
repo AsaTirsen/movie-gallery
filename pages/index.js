@@ -1,4 +1,4 @@
-import styles from "../styles/Home.module.css";
+import styles from "../styles/Index.module.css";
 import MovieList from "../components/movies/MovieList";
 import { useState, useEffect, useCallback } from "react";
 import Search from "../components/movies/Search";
@@ -34,34 +34,31 @@ export default function Index() {
     }));
   };
 
-  // Sets state with req response 
+  // Sets state with req response
   useEffect(() => {
     const fetchFromMovieDb = async () => {
-      let movies;
-      let genreIds;
-      let urlMovie;
-      let urlGenres = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apikey}&language=en-US`;
-      if (query === "") {
-        urlMovie = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apikey}&language=en-US`;
-      } else {
-        urlMovie = `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&language=en-US&query=${query}`;
-      }
+      const urlGenres = `https://api.themoviedb.org/3/genre/movie/list?api_key=${apikey}&language=en-US`;
+      const urlMovie =
+        query === ""
+          ? `https://api.themoviedb.org/3/movie/now_playing?api_key=${apikey}&language=en-US`
+          : `https://api.themoviedb.org/3/search/movie?api_key=${apikey}&language=en-US&query=${query}`;
+
       try {
         const [moviesResponse, genresResponse] = await Promise.all([
           fetch(urlMovie),
           fetch(urlGenres),
         ]);
-        movies = await moviesResponse.json();
-        genreIds = await genresResponse.json();
+        const movies = await moviesResponse.json();
+        const genreIds = await genresResponse.json();
         if (moviesResponse.ok && genresResponse.ok) {
           setloadedMovies(responseToMovieList(movies, genreIds).slice(0, 10));
-          setIsLoading(false);
         } else {
           throw new Error(moviesResponse.status);
         }
       } catch (error) {
         setHasError(true);
         setStatusCode(error.message);
+      } finally {
         setIsLoading(false);
       }
     };
@@ -70,7 +67,7 @@ export default function Index() {
 
   return (
     <main className={styles.main}>
-      <div className={styles.page}>
+      <div className={styles.container}>
         <Search passQuery={setQuery} />
         {isLoading && <Loading />}
         {!hasError && <MovieList movies={loadedMovies} />}
