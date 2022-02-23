@@ -17,7 +17,6 @@ function MovieList(props) {
               movie.title || movie.name
             }`}</div>
             {`${movie.year.slice(0, 4)}`} &bull; {`${movie.genres}`}
-            {console.log(movie.year)}
           </figcaption>
         </figure>
       ))}
