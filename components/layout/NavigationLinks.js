@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+// "/" to be replaced with proper routes
 function NavigationLinks(props) {
   return (
     <ul className={props.className}>

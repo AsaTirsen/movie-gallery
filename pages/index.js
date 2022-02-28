@@ -18,6 +18,7 @@ export default function Index() {
 
   // Converts response to list of movies
   const responseToMovieList = (response, genreIds) => {
+
     return response.results.map((result) => ({
       key: result.id,
       id: result.id,
@@ -37,6 +38,7 @@ export default function Index() {
   // Sets state with req response
   useEffect(() => {
     const fetchFromMovieDb = async () => {
+      //Aborts fetch to avoid race condition
       if (prevSearch != null) {
         prevSearch.abort();
       }
@@ -52,7 +54,6 @@ export default function Index() {
           fetch(urlMovie, {signal: prevSearch.signal}),
           fetch(urlGenres, {signal: prevSearch.signal}),
         ]);
-        console.log(urlMovie);
         const movies = await moviesResponse.json();
         const genreIds = await genresResponse.json();
         if (moviesResponse.ok && genresResponse.ok) {

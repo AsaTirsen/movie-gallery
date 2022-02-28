@@ -14,18 +14,9 @@ describe("Layout", () => {
   it("should render the links with correct names", () => {
     render(<Layout />);
     const links = screen.getAllByRole("link");
+    // "/" to be replaced with proper routes
     expect(links).toHaveLength(8);
-    links.forEach((link) => {
-      switch (link.textContent) {
-        case "Movies":
-          expect(link).toHaveAttribute("href", "/");
-        case "TV-shows":
-          expect(link).toHaveAttribute("href", "/");
-        case "Actors":
-          expect(link).toHaveAttribute("href", "/");
-        case "Sign in":
-          expect(link).toHaveAttribute("href", "/");
-      }
-    });
+    //Checks that route matches tect content of attribute
+    links.map(link => expect(link).toHaveAttribute("href", "/" || link.textContent))
   });
 });
