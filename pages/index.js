@@ -12,20 +12,24 @@ export default function Index() {
   const [query, setQuery] = useState("");
   const [hasError, setHasError] = useState(false);
   const [statusCode, setStatusCode] = useState();
-  const apikey = "27cfec6c9eb8080cb7d8025ba420e2d7";
-  const baseUrl = "https://api.themoviedb.org/3/";
   let prevSearch;
+
+  const baseUrl = "https://api.themoviedb.org/3/";
+  const apikey = "27cfec6c9eb8080cb7d8025ba420e2d7";
 
   // Converts response to list of movies
   const responseToMovieList = (response, genreIds) => {
-
     return response.results.map((result) => ({
       key: result.id,
       id: result.id,
       poster_path: result.poster_path,
       title: result.title,
       name: result.name,
-      year: result.release_date ? result.release_date : result.first_air_date ? result.first_air_date : "YEAR",
+      year: result.release_date
+        ? result.release_date
+        : result.first_air_date
+        ? result.first_air_date
+        : "YEAR",
       genres: result.genre_ids
         .map(
           (genre_id) =>
@@ -34,11 +38,11 @@ export default function Index() {
         .join(", "),
     }));
   };
-  
+
   // Sets state with req response
   useEffect(() => {
     const fetchFromMovieDb = async () => {
-      //Aborts fetch to avoid race condition
+      // Aborts fetch to avoid race condition
       if (prevSearch != null) {
         prevSearch.abort();
       }
@@ -51,8 +55,8 @@ export default function Index() {
 
       try {
         const [moviesResponse, genresResponse] = await Promise.all([
-          fetch(urlMovie, {signal: prevSearch.signal}),
-          fetch(urlGenres, {signal: prevSearch.signal}),
+          fetch(urlMovie, { signal: prevSearch.signal }),
+          fetch(urlGenres, { signal: prevSearch.signal }),
         ]);
         const movies = await moviesResponse.json();
         const genreIds = await genresResponse.json();
