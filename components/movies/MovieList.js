@@ -4,7 +4,7 @@ const baseUrl = "https://image.tmdb.org/t/p/original/";
 
 function MovieList(props) {
   return (
-    <div className={classes.listcontainer}>
+    <article className={classes.listcontainer}>
       {props.movies.map((movie) => (
         <figure key={movie.id} className={classes.imagecontainer}>
           <img
@@ -20,7 +20,7 @@ function MovieList(props) {
           </figcaption>
         </figure>
       ))}
-    </div>
+    </article>
   );
 }
 

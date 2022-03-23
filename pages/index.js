@@ -15,6 +15,7 @@ export default function Index() {
   let prevSearch;
 
   const baseUrl = "https://api.themoviedb.org/3/";
+  //API key should not be exposed...
   const apikey = "27cfec6c9eb8080cb7d8025ba420e2d7";
 
   // Converts response to list of movies

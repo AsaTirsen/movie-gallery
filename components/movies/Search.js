@@ -10,13 +10,13 @@ export default function Search(props) {
   }, []);
 
   return (
-    <div className={classes.container} ref={searchRef}>
+    <section className={classes.container} ref={searchRef}>
       <input
         className={classes.search}
         onChange={onChange}
         placeholder="Search movie, TV shows or actors"
         type="text"
       />
-    </div>
+    </section>
   );
 }
